@@ -430,3 +430,15 @@ export const defaultTimeZones: TimeZone[] = [
   availableTimeZones.find(tz => tz.id === 'europe-london')!,
   availableTimeZones.find(tz => tz.id === 'asia-tokyo')!,
 ];
+
+export const getRepresentativeTimeZonesByCountry = (): TimeZone[] => {
+  const countryMap = new Map<string, TimeZone>();
+  
+  for (const timeZone of availableTimeZones) {
+    if (!countryMap.has(timeZone.country)) {
+      countryMap.set(timeZone.country, timeZone);
+    }
+  }
+  
+  return Array.from(countryMap.values()).sort((a, b) => a.country.localeCompare(b.country));
+};

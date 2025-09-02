@@ -2,6 +2,7 @@ import { useWorldClock } from './hooks/useWorldClock';
 import { TimeZoneCard } from './components/TimeZoneCard';
 import { TimeZoneSelector } from './components/TimeZoneSelector';
 import { TimeZoneRow } from './components/TimeZoneRow';
+import { StationaryTimeZoneRow } from './components/StationaryTimeZoneRow';
 import './App.css';
 
 function App() {
@@ -22,6 +23,12 @@ function App() {
       </header>
 
       <main className="app-main">
+        <StationaryTimeZoneRow
+          getTimeInTimeZone={getTimeInTimeZone}
+          getDateInTimeZone={getDateInTimeZone}
+          getTimeZoneOffset={getTimeZoneOffset}
+        />
+
         <TimeZoneSelector
           onAddTimeZone={addTimeZone}
           selectedTimeZones={selectedTimeZones}
