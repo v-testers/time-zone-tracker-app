@@ -1,6 +1,7 @@
 import { useWorldClock } from './hooks/useWorldClock';
 import { TimeZoneCard } from './components/TimeZoneCard';
 import { TimeZoneSelector } from './components/TimeZoneSelector';
+import { TimeZoneRow } from './components/TimeZoneRow';
 import './App.css';
 
 function App() {
@@ -25,6 +26,17 @@ function App() {
           onAddTimeZone={addTimeZone}
           selectedTimeZones={selectedTimeZones}
         />
+
+        {selectedTimeZones.length > 0 && (
+          <TimeZoneRow
+            timeZones={selectedTimeZones}
+            getTimeInTimeZone={getTimeInTimeZone}
+            getDateInTimeZone={getDateInTimeZone}
+            getTimeZoneOffset={getTimeZoneOffset}
+            onRemoveTimeZone={removeTimeZone}
+            canRemove={selectedTimeZones.length > 1}
+          />
+        )}
 
         <div className="timezone-grid">
           {selectedTimeZones.map((timeZone) => (
