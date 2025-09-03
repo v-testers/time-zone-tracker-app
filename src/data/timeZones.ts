@@ -434,6 +434,24 @@ export const defaultTimeZones: TimeZone[] = [
 export const getRepresentativeTimeZonesByCountry = (): TimeZone[] => {
   const countryMap = new Map<string, TimeZone>();
   
+  // Priority time zones to ensure they are included (PST, CST, MST, EST, AST)
+  const priorityTimeZones = [
+    'america-los_angeles', // PST
+    'america-chicago', // CST  
+    'america-denver', // MST
+    'america-new_york', // EST
+    'america-halifax', // AST
+  ];
+  
+  // First, add priority time zones
+  for (const priorityId of priorityTimeZones) {
+    const priorityTimeZone = availableTimeZones.find(tz => tz.id === priorityId);
+    if (priorityTimeZone && !countryMap.has(priorityTimeZone.country)) {
+      countryMap.set(priorityTimeZone.country, priorityTimeZone);
+    }
+  }
+  
+  // Then add one representative time zone per remaining country
   for (const timeZone of availableTimeZones) {
     if (!countryMap.has(timeZone.country)) {
       countryMap.set(timeZone.country, timeZone);
