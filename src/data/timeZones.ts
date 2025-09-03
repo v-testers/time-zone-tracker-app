@@ -432,23 +432,18 @@ export const defaultTimeZones: TimeZone[] = [
 ];
 
 export const getRepresentativeTimeZonesByCountry = (): TimeZone[] => {
-  // Only show the main time zones (PST, CST, MST, EST, AST) as examples
-  const mainTimeZoneIds = [
-    'america-los_angeles', // PST
-    'america-chicago', // CST  
-    'america-denver', // MST
-    'america-new_york', // EST
-    'america-halifax', // AST
-  ];
+  // Create a map to store one time zone per country
+  const countryTimeZoneMap = new Map<string, TimeZone>();
   
-  const mainTimeZones: TimeZone[] = [];
-  
-  for (const timeZoneId of mainTimeZoneIds) {
-    const timeZone = availableTimeZones.find(tz => tz.id === timeZoneId);
-    if (timeZone) {
-      mainTimeZones.push(timeZone);
+  // Iterate through all time zones and keep only the first one for each country
+  for (const timeZone of availableTimeZones) {
+    if (!countryTimeZoneMap.has(timeZone.country)) {
+      countryTimeZoneMap.set(timeZone.country, timeZone);
     }
   }
   
-  return mainTimeZones;
+  // Convert map values to array and sort by country name for consistent ordering
+  return Array.from(countryTimeZoneMap.values()).sort((a, b) => 
+    a.country.localeCompare(b.country)
+  );
 };
