@@ -432,23 +432,23 @@ export const defaultTimeZones: TimeZone[] = [
 ];
 
 export const getRepresentativeTimeZonesByCountry = (): TimeZone[] => {
-  // Only show the main time zones (PST, CST, MST, EST, AST) as examples
-  const mainTimeZoneIds = [
-    'america-los_angeles', // PST
-    'america-chicago', // CST  
-    'america-denver', // MST
-    'america-new_york', // EST
-    'america-halifax', // AST
+  // Show diverse time zones from different continents and countries
+  const diverseTimeZoneIds = [
+    'europe-london', // GMT - United Kingdom, Europe
+    'asia-tokyo', // JST - Japan, East Asia
+    'australia-sydney', // AEST - Australia, Oceania
+    'america-new_york', // EST - United States, North America
+    'africa-lagos', // WAT - Nigeria, West Africa
   ];
   
-  const mainTimeZones: TimeZone[] = [];
+  const diverseTimeZones: TimeZone[] = [];
   
-  for (const timeZoneId of mainTimeZoneIds) {
+  for (const timeZoneId of diverseTimeZoneIds) {
     const timeZone = availableTimeZones.find(tz => tz.id === timeZoneId);
     if (timeZone) {
-      mainTimeZones.push(timeZone);
+      diverseTimeZones.push(timeZone);
     }
   }
   
-  return mainTimeZones;
+  return diverseTimeZones;
 };
