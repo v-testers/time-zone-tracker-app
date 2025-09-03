@@ -10,6 +10,22 @@
   overflow: hidden;
 }
 
+.timezone-flag-background {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  font-size: 100px;
+  opacity: 0.15;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(15deg);
+}
+
 .timezone-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -21,6 +37,8 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
 }
 
 .timezone-location {
@@ -69,6 +87,8 @@
 .timezone-time {
   text-align: center;
   margin: 24px 0;
+  position: relative;
+  z-index: 2;
 }
 
 .time-display {
@@ -93,6 +113,8 @@
   align-items: center;
   padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
 }
 
 .timezone-offset {
@@ -118,6 +140,10 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .timezone-flag-background {
+    opacity: 0.1;
   }
   
   .timezone-card:hover {

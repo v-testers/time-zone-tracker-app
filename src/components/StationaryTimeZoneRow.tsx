@@ -20,6 +20,9 @@ export const StationaryTimeZoneRow: React.FC<StationaryTimeZoneRowProps> = ({
       <div className="stationary-timezone-row">
         {representativeTimeZones.map((timeZone) => (
           <div key={timeZone.id} className="stationary-timezone-row-item">
+            <div className="stationary-timezone-row-flag-background">
+              {timeZone.flag}
+            </div>
             <div className="stationary-timezone-row-header">
               <div className="stationary-timezone-row-location">
                 <h3 className="stationary-timezone-row-city">{timeZone.city}</h3>

@@ -112,7 +112,7 @@
 .timezone-option {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
   width: 100%;
   padding: 16px;
   border: none;
@@ -120,6 +120,11 @@
   cursor: pointer;
   transition: all 0.2s ease;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timezone-option-flag {
+  font-size: 1.2rem;
+  flex-shrink: 0;
 }
 
 .timezone-option:last-child {
@@ -135,6 +140,7 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+  flex: 1;
 }
 
 .timezone-option-city {
@@ -156,6 +162,7 @@
   background: rgba(255, 255, 255, 0.1);
   padding: 4px 8px;
   border-radius: 8px;
+  flex-shrink: 0;
 }
 
 .no-results {

@@ -19,7 +19,10 @@ export const TimeZoneCard: React.FC<TimeZoneCardProps> = ({
   canRemove,
 }) => {
   return (
-    <div className="timezone-card">
+    <div className="timezone-card" style={{ '--flag-emoji': `"${timeZone.flag || '🏳️'}"` } as React.CSSProperties}>
+      <div className="timezone-flag-background">
+        {timeZone.flag}
+      </div>
       <div className="timezone-header">
         <div className="timezone-location">
           <h3 className="timezone-city">{timeZone.city}</h3>

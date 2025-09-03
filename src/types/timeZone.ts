@@ -5,6 +5,7 @@ export interface TimeZone {
   country: string;
   offset: string;
   abbreviation: string;
+  flag?: string;
 }
 
 export interface WorldClockState {

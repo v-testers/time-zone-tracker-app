@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { TimeZone } from '../types/timeZone';
-import { availableTimeZones } from '../data/timeZones';
+import { getTimeZonesWithFlags } from '../data/timeZones';
 import './TimeZoneSelector.css';
 
 interface TimeZoneSelectorProps {
@@ -15,6 +15,7 @@ export const TimeZoneSelector: React.FC<TimeZoneSelectorProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
+  const availableTimeZones = getTimeZonesWithFlags();
   const availableToAdd = availableTimeZones.filter(
     tz => !selectedTimeZones.some(selected => selected.id === tz.id)
   );
@@ -67,6 +68,9 @@ export const TimeZoneSelector: React.FC<TimeZoneSelectorProps> = ({
                   className="timezone-option"
                   onClick={() => handleAddTimeZone(timeZone)}
                 >
+                  <div className="timezone-option-flag">
+                    {timeZone.flag}
+                  </div>
                   <div className="timezone-option-info">
                     <span className="timezone-option-city">{timeZone.city}</span>
                     <span className="timezone-option-country">{timeZone.country}</span>

@@ -1,4 +1,5 @@
 import type { TimeZone } from '../types/timeZone';
+import { getCountryFlag } from '../utils/countryFlags';
 
 export const availableTimeZones: TimeZone[] = [
   // AFRICA
@@ -425,10 +426,23 @@ export const availableTimeZones: TimeZone[] = [
   { id: 'pacific-wallis', name: 'Pacific/Wallis', city: 'Mata-Utu', country: 'Wallis and Futuna', offset: 'UTC+12', abbreviation: 'WFT' },
 ];
 
+// Helper function to enrich a timezone with flag information
+export const enrichTimeZoneWithFlag = (timeZone: TimeZone): TimeZone => {
+  return {
+    ...timeZone,
+    flag: getCountryFlag(timeZone.country)
+  };
+};
+
+// Helper function to get all timezones with flags
+export const getTimeZonesWithFlags = (): TimeZone[] => {
+  return availableTimeZones.map(enrichTimeZoneWithFlag);
+};
+
 export const defaultTimeZones: TimeZone[] = [
-  availableTimeZones.find(tz => tz.id === 'america-new_york')!,
-  availableTimeZones.find(tz => tz.id === 'europe-london')!,
-  availableTimeZones.find(tz => tz.id === 'asia-tokyo')!,
+  enrichTimeZoneWithFlag(availableTimeZones.find(tz => tz.id === 'america-new_york')!),
+  enrichTimeZoneWithFlag(availableTimeZones.find(tz => tz.id === 'europe-london')!),
+  enrichTimeZoneWithFlag(availableTimeZones.find(tz => tz.id === 'asia-tokyo')!),
 ];
 
 export const getRepresentativeTimeZonesByCountry = (): TimeZone[] => {
@@ -446,7 +460,7 @@ export const getRepresentativeTimeZonesByCountry = (): TimeZone[] => {
   for (const timeZoneId of diverseTimeZoneIds) {
     const timeZone = availableTimeZones.find(tz => tz.id === timeZoneId);
     if (timeZone) {
-      diverseTimeZones.push(timeZone);
+      diverseTimeZones.push(enrichTimeZoneWithFlag(timeZone));
     }
   }
   

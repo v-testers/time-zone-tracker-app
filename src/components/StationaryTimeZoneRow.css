@@ -52,6 +52,22 @@
   overflow: hidden;
 }
 
+.stationary-timezone-row-flag-background {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 80px;
+  height: 80px;
+  font-size: 50px;
+  opacity: 0.15;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(15deg);
+}
+
 .stationary-timezone-row-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
@@ -63,6 +79,8 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
 }
 
 .stationary-timezone-row-location {
@@ -89,6 +107,8 @@
 .stationary-timezone-row-time {
   text-align: center;
   margin: 12px 0;
+  position: relative;
+  z-index: 2;
 }
 
 .stationary-timezone-row-time-display {
@@ -113,6 +133,8 @@
   align-items: center;
   padding-top: 8px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
 }
 
 .stationary-timezone-row-offset {
@@ -155,6 +177,10 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stationary-timezone-row-flag-background {
+    opacity: 0.1;
   }
   
   .stationary-timezone-row-item:hover {
