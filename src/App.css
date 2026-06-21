@@ -3,6 +3,8 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 12px;
 }
 
 .logo {
@@ -39,4 +41,37 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.restart-btn:hover {
+  border-color: #ff6464;
+}
+
+.refresh-btn:hover {
+  border-color: #64c8ff;
+}
+
+.slideshow-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .slide {
+    transition: opacity 1.5s ease-in-out;
+  }
+}
+
+.slide.active {
+  opacity: 1;
 }
